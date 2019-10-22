@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
+const generate_cases = require('./generate_cases');
 const morgan = require('morgan');
 var express = require('express');
 
@@ -20,3 +21,5 @@ app.listen(port, () => {
 app.get('/readiness', function(req, res, next) {
   res.send('ok');
 });
+
+app.post('/generate_cases', generate_cases);
