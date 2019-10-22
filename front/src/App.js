@@ -10,7 +10,7 @@ function App() {
   const [result, setResult] = useState('');
 
   const onGenerate = useCallback(() => {
-    fetch('http://localhost:8080/generate_cases', {
+    fetch('https://pairwise-api.yuuniworks.com/generate_cases', {
       method: 'POST',
       body: JSON.stringify({ factors: factorText }),
     })
