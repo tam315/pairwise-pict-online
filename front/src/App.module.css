@@ -1,0 +1,15 @@
+.rootContainer {
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.contentArea {
+  align-items: stretch;
+  display: flex;
+  flex: 1; /* expand */
+  justify-content: space-between;
+  padding: 1rem;
+}

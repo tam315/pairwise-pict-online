@@ -1,0 +1,9 @@
+.rootContainer {
+  align-items: center;
+  background: #333;
+  color: white;
+  display: flex;
+  font-size: 1.5rem;
+  height: 48px;
+  padding-left: 1rem;
+}
