@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  pict_online:
+    build: .
+    container_name: pict_online
+    # volumes:
+    #   - ./web:/root/web
+    #   - /root/web/node_modules/
+    # working_dir: /root/web
+    # ports:
+    #   - '8080:8080'
+    command: bash -c 'tail -f /dev/null'
