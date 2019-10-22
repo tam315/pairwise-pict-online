@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   // generate temporary file
   tmp.file(function(err, path) {
     if (err) {
-      return res.status(500).json({ message: err });
+      return res.status(500).json(JSON.stringify(err));
     }
 
     // write received data to a file
@@ -15,7 +15,7 @@ module.exports = (req, res) => {
     // exec pict
     exec(`pict ${path}`, (err, stdout, stderr) => {
       if (err) {
-        return res.status(500).json({ message: stderr });
+        return res.status(500).json(JSON.stringify(stderr));
       }
       res.json(stdout);
     });
