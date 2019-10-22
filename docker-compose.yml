@@ -1,12 +1,17 @@
+# This file is only used in the development enviroment
+
 version: '3.3'
 services:
   pict_online:
     build: .
+    environment:
+      NODE_ENV: development
     container_name: pict_online
-    # volumes:
-    #   - ./web:/root/web
-    #   - /root/web/node_modules/
-    # working_dir: /root/web
-    # ports:
-    #   - '8080:8080'
-    command: bash -c 'tail -f /dev/null'
+    command: bash -c 'yarn && yarn dev' # `yarn` to also install dev packages
+    volumes:
+      # override existing files in docker image with local file
+      - .:/root/api
+      - /root/api/node_modules/
+    working_dir: /root/api
+    ports:
+      - '8080:8080'
