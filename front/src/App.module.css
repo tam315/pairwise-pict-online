@@ -6,10 +6,34 @@
   width: 100vw;
 }
 
-.contentArea {
+.description {
+  padding: 0 1rem;
+  margin-top: 1rem;
+  line-height: 1.8;
+}
+
+.row {
   align-items: stretch;
   display: flex;
-  flex: 1; /* expand */
+  flex: 1 1; /* expand */
   justify-content: space-between;
   padding: 1rem;
+}
+
+.factors {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.download {
+  display: block;
+  margin: 0.5rem 0 1rem;
+  text-align: center;
 }

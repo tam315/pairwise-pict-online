@@ -16,8 +16,11 @@ RUN make && install ./pict /usr/bin
 RUN which pict
 
 ###############################
-# API (for production)
+# Node.js
 ###############################
+
+# following part doesn't affects the development environment
+# because files are overritten by docker-compose.
 
 # copy essential files
 RUN mkdir /root/api
