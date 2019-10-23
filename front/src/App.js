@@ -11,7 +11,7 @@ const App = () => {
   const [result, setResult] = useState('');
 
   const onGenerate = useCallback(() => {
-    fetch('https://pairwise-api.yuuniworks.com/generate_cases', {
+    fetch(`${process.env.REACT_APP_API_URL}/generate_cases`, {
       method: 'POST',
       body: JSON.stringify({ factors: factorText }),
     })
