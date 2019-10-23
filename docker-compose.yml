@@ -2,16 +2,31 @@
 
 version: '3.3'
 services:
-  pict_online:
+  pict_api:
     build: .
     environment:
       NODE_ENV: development
-    container_name: pict_online
+    container_name: pict_api
     command: bash -c 'yarn && yarn dev' # `yarn` to also install dev packages
     volumes:
-      # override existing files in docker image with local file
+      # overwrite existing files in docker image with local file
       - .:/root/api
       - /root/api/node_modules/
     working_dir: /root/api
     ports:
       - '8080:8080'
+  pict_react:
+    image: node:12.12.0-alpine
+    container_name: pict_react
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=1000
+    volumes:
+      - ./front:/root/front
+      - /root/front/node_modules/
+    working_dir: /root/front
+    depends_on:
+      - pict_api
+    ports:
+      - '3000:3000'
+    command: sh -c 'yarn && yarn start'
