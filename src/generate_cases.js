@@ -4,8 +4,9 @@ const tmp = require('tmp');
 
 module.exports = (req, res) => {
   // generate temporary file
-  tmp.file(function(err, path) {
+  tmp.file(function(err, path, _, cleanupCallback) {
     if (err) {
+      console.log('Creating temp file failed:', err);
       return res.status(500).json(JSON.stringify(err));
     }
 
@@ -13,8 +14,13 @@ module.exports = (req, res) => {
     fs.writeFileSync(path, req.body.factors);
 
     // exec pict
-    exec(`pict ${path}`, (err, stdout, stderr) => {
+    const option = {
+      timeout: 3000,
+    };
+    exec(`pict ${path}`, option, (err, stdout, stderr) => {
+      cleanupCallback();
       if (err) {
+        console.log('Generating testcases failed:', err);
         return res.status(500).json(JSON.stringify(stderr));
       }
       res.json(stdout);
