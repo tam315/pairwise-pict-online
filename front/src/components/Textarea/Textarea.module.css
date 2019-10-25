@@ -1,6 +1,16 @@
 .rootContainer {
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
   font-family: monospace;
   font-size: 1rem;
   height: 200px;
+  padding: 0.375rem 0.75rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
+}
+
+.rootContainer:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: 0;
 }

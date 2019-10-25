@@ -13,3 +13,9 @@
   background-color: #343a40;
   border-color: #343a40;
 }
+
+.button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
+  outline: 0;
+  text-decoration: none;
+}
