@@ -20,6 +20,10 @@ app.get('/readiness', (req, res, next) => {
 
 app.post('/generate_cases', generate_cases);
 
-app.listen(port, () => {
-  console.log(`Server listening on: ${port}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`Server listening on: ${port}`);
+  });
+}
+
+module.exports = app;

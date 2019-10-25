@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "serve": "NODE_ENV=production node src/index.js"
+    "serve": "NODE_ENV=production node src/index.js",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -17,6 +18,15 @@
     "tmp": "^0.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/front/"
+    ]
   }
 }
