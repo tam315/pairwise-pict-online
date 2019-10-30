@@ -7,7 +7,14 @@ var express = require('express');
 
 var app = express();
 
-app.use(cors());
+corsOptions =
+  process.env.NODE_ENV === 'production'
+    ? {
+        origin: 'https://pairwise.yuuniworks.com',
+      }
+    : {};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json({ type: '*/*' })); // parses any requests into json
 app.use(compression());
 app.use(morgan('combined'));
