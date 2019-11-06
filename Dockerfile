@@ -1,4 +1,4 @@
-FROM node:12.12.0-buster
+FROM golang:1.13.4-buster
 
 ###############################
 # pict
@@ -15,23 +15,8 @@ WORKDIR /root/pict
 RUN make && install ./pict /usr/bin
 RUN which pict
 
-###############################
-# Node.js
-###############################
+# for auto reload
+RUN go get github.com/pilu/fresh
 
-# following part doesn't affects the development environment
-# because files are overritten by docker-compose.
-
-# copy essential files
-RUN mkdir /root/api
-COPY package.json /root/api/
-COPY yarn.lock /root/api/
-
-# install packages
-WORKDIR /root/api
-RUN yarn --prod
-
-# copy rest files
-COPY src /root/api/src/
-
-CMD ["yarn","serve"]
+# start server
+CMD go run main.go

@@ -7,12 +7,10 @@ services:
     environment:
       NODE_ENV: development
     container_name: pict_api
-    command: bash -c 'yarn && yarn dev' # `yarn` to also install dev packages
     volumes:
-      # overwrite existing files in docker image with local file
-      - .:/root/api
-      - /root/api/node_modules/
-    working_dir: /root/api
+      - .:/go/src/github.com/junkboy0315/pairwise-pict-online
+    working_dir: /go/src/github.com/junkboy0315/pairwise-pict-online
+    command: fresh # run `main.go` with auto reload
     ports:
       - '8080:8080'
   pict_react:
