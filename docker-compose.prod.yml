@@ -1,0 +1,30 @@
+version: '3.4'
+services:
+  pict_api_prod:
+    build:
+      context: .
+      target: target_for_production
+    environment:
+      NODE_ENV: production
+    container_name: pict_api_prod
+    volumes:
+      - .:/go/src/github.com/junkboy0315/pairwise-pict-online
+    working_dir: /go/src/github.com/junkboy0315/pairwise-pict-online
+    ports:
+      - '8080:8080'
+  # following frontend will not work because
+  # browsers doe's not support CORS on localhost.
+  # CORS should be disabled to test production builds on local environment.
+  # https://stackoverflow.com/a/10892392/6574720
+  pict_react_prod:
+    image: node:12.12.0-alpine
+    container_name: pict_react_prod
+    environment:
+      NODE_ENV: development # run frontend as dev mode to point to the local API
+    volumes:
+      - ./front:/root/front
+      - /root/front/node_modules/
+    working_dir: /root/front
+    ports:
+      - '3000:3000'
+    command: sh -c 'yarn && yarn start'

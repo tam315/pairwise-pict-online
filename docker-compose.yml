@@ -1,14 +1,15 @@
-# This file is only used in the development enviroment
-
-version: '3.3'
+version: '3.4'
 services:
   pict_api:
-    build: .
+    build:
+      context: .
+      target: target_for_development
     environment:
       NODE_ENV: development
     container_name: pict_api
     volumes:
-      - .:/go/src/github.com/junkboy0315/pairwise-pict-online
+      - ./:/go/src/github.com/junkboy0315/pairwise-pict-online/
+      - /go/src/github.com/junkboy0315/pairwise-pict-online/front # to ignore front/node_modules
     working_dir: /go/src/github.com/junkboy0315/pairwise-pict-online
     command: fresh # run `main.go` with auto reload
     ports:
@@ -23,8 +24,6 @@ services:
       - ./front:/root/front
       - /root/front/node_modules/
     working_dir: /root/front
-    depends_on:
-      - pict_api
     ports:
       - '3000:3000'
     command: sh -c 'yarn && yarn start'

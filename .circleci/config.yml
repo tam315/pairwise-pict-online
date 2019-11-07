@@ -10,10 +10,10 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build Docker image
-          command: docker build -t app .
+          command: docker build --target target_for_development -t app .
       - run:
           name: Test Docker image
-          command: docker run -it --rm app bash -c "yarn && yarn test"
+          command: docker run -it --rm app bash -c "go test"
   frontend:
     docker:
       - image: circleci/node:12.12.0-buster
