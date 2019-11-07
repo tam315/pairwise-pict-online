@@ -29,5 +29,16 @@ RUN go get github.com/pilu/fresh
 COPY main.go /go/src/github.com/junkboy0315/pairwise-pict-online/
 WORKDIR /go/src/github.com/junkboy0315/pairwise-pict-online
 
-# start server
-CMD ["fresh"]
+###############################
+# following part is production specific settings
+###############################
+
+RUN CGO_ENABLED=0 GOOS=linux go build -v -o server
+
+# Use clean image for a lean production container.
+# https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
+FROM debian:buster-20191014-slim
+COPY --from=0 /root/pict/pict /usr/bin/
+RUN which pict
+COPY --from=0 /go/src/github.com/junkboy0315/pairwise-pict-online/server /server
+CMD ["/server"]

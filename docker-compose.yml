@@ -23,8 +23,6 @@ services:
       - ./front:/root/front
       - /root/front/node_modules/
     working_dir: /root/front
-    depends_on:
-      - pict_api
     ports:
       - '3000:3000'
     command: sh -c 'yarn && yarn start'
