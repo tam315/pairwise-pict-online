@@ -8,9 +8,9 @@ services:
       NODE_ENV: development
     container_name: pict_api
     volumes:
-      - ./:/go/src/github.com/junkboy0315/pairwise-pict-online/
-      - /go/src/github.com/junkboy0315/pairwise-pict-online/front # to ignore front/node_modules
-    working_dir: /go/src/github.com/junkboy0315/pairwise-pict-online
+      - ./:/root/api/
+      - /root/api/front # to ignore front/node_modules
+    working_dir: /root/api/
     command: fresh # run `main.go` with auto reload
     ports:
       - '8080:8080'

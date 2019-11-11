@@ -17,26 +17,22 @@ RUN make && install ./pict /usr/bin
 RUN which pict
 
 ### golang ###
-RUN go get github.com/gin-contrib/cors
-RUN go get github.com/gin-contrib/gzip
-RUN go get github.com/gin-gonic/gin
-RUN go get github.com/stretchr/testify/assert
+
+# install libraries
+WORKDIR /root/api
+COPY go.* ./
+RUN go mod download
 
 # to enable auto reloading while developing
 RUN go get github.com/pilu/fresh
-
-COPY main.go /go/src/github.com/junkboy0315/pairwise-pict-online/
-COPY main_test.go /go/src/github.com/junkboy0315/pairwise-pict-online/
-WORKDIR /go/src/github.com/junkboy0315/pairwise-pict-online
-
-# start server
-CMD ["fresh"]
 
 ###############################
 # for production
 ###############################
 
 FROM target_for_development AS target_for_compilation
+WORKDIR /root/api
+COPY *.go ./
 RUN CGO_ENABLED=0 GOOS=linux go build -v -o server
 
 # Use clean image for a lean production container.
@@ -44,5 +40,5 @@ RUN CGO_ENABLED=0 GOOS=linux go build -v -o server
 FROM debian:buster-20191014-slim AS target_for_production
 COPY --from=target_for_compilation /root/pict/pict /usr/bin/
 RUN which pict
-COPY --from=target_for_compilation /go/src/github.com/junkboy0315/pairwise-pict-online/server /server
+COPY --from=target_for_compilation /root/api/server /server
 CMD ["/server"]

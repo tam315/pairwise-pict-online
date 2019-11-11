@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"os"
@@ -47,6 +48,16 @@ func SetupRouter() *gin.Engine {
 		// extract request body
 		var generateCasesRequestBody GenerateCasesRequestBody
 		c.BindJSON(&generateCasesRequestBody)
+
+		// log body
+		bodyBytes, err := json.Marshal(generateCasesRequestBody)
+		if err != nil {
+			log.Print(err)
+			c.Status(500)
+			return
+		}
+		bodyString := string(bodyBytes)
+		log.Print(bodyString)
 
 		// create temporary test-factors file
 		factors := []byte(generateCasesRequestBody.Factors)

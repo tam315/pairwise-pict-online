@@ -1,3 +1,5 @@
+# use as follows:
+# docker-compose -f docker-compose.prod.yml up --build
 version: '3.4'
 services:
   pict_api_prod:
@@ -7,9 +9,6 @@ services:
     environment:
       NODE_ENV: production
     container_name: pict_api_prod
-    volumes:
-      - .:/go/src/github.com/junkboy0315/pairwise-pict-online
-    working_dir: /go/src/github.com/junkboy0315/pairwise-pict-online
     ports:
       - '8080:8080'
   # following frontend will not work because
