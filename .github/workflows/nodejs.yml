@@ -11,4 +11,3 @@ jobs:
 
       - name: test server
         run: docker-compose -f docker-compose.test.yml up --exit-code-from pict_api_test
-#
