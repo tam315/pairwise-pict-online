@@ -1,0 +1,14 @@
+# use as follows:
+# docker-compose -f docker-compose.test.yml up --exit-code-from pict_api_test
+version: '3.4'
+services:
+  pict_api_test:
+    build:
+      context: .
+      target: target_for_compilation
+    environment:
+      NODE_ENV: development
+    container_name: pict_api_test
+    ports:
+      - '8080:8080'
+    command: sh -c 'go test'
