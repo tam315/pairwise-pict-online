@@ -56,6 +56,14 @@ func SetupRouter() *gin.Engine {
 			c.Status(500)
 			return
 		}
+
+		// limit size of factors
+		if len(bodyBytes) > 5000 {
+			c.JSON(400, "Test factors are too large. Maximum size is limited to 5KB.")
+			return
+		}
+
+		// log factors
 		bodyString := string(bodyBytes)
 		log.Print(bodyString)
 
