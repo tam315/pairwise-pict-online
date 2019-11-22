@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"unicode/utf8"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
@@ -54,6 +55,12 @@ func SetupRouter() *gin.Engine {
 		if err != nil {
 			log.Print(err)
 			c.Status(500)
+			return
+		}
+
+		// limit multi-byte chars
+		if len(bodyBytes) != utf8.RuneCount(bodyBytes) {
+			c.JSON(400, "Multi-byte characters cannot be used for now.")
 			return
 		}
 
