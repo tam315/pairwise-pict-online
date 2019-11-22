@@ -5,19 +5,23 @@ import Header from './components/Header';
 import Textarea from './components/Textarea';
 
 const App = () => {
+  const [isFetching, setIsFetching] = useState(false);
   const [factorText, setFactorText] = useState(
     '#############################################################\n# Paste test factors here.\n# Check the documents for more details.\n# https://github.com/Microsoft/pict/blob/master/doc/pict.md\n#############################################################\n\nType:          Single, Span, Stripe, Mirror, RAID-5\nSize:          10, 100, 500, 1000, 5000, 10000, 40000\nFormat method: Quick, Slow\nFile system:   FAT, FAT32, NTFS\nCompression:   On, Off\n\nif [Type] = "RAID-5" then [Compression] = "Off";\nif [Size] >= 500 then [Format method] = "Quick";',
   );
   const [result, setResult] = useState('');
 
   const onGenerate = useCallback(() => {
+    setIsFetching(true);
+    setResult('');
     fetch(`${process.env.REACT_APP_API_URL}/generate_cases`, {
       method: 'POST',
       body: JSON.stringify({ factors: factorText }),
     })
       .then(res => res.json())
       .then(resJson => setResult(resJson))
-      .catch(err => setResult(err.message));
+      .catch(err => setResult(err.message))
+      .finally(() => setIsFetching(false));
   }, [factorText]);
 
   return (
@@ -54,9 +58,9 @@ const App = () => {
 
         <Button
           onClick={onGenerate}
-          style={{ alignSelf: 'center', margin: '0 1rem' }}
+          style={{ alignSelf: 'center', width: '8rem', margin: '0 1rem' }}
         >
-          Generate=>
+          {isFetching ? 'loading...' : 'Generate=>'}
         </Button>
 
         <div className={style.results}>
