@@ -80,21 +80,6 @@ const App = () => {
           </div>
         </div>
       </div>
-
-      {/* github badge */}
-      <a href="https://github.com/junkboy0315/pairwise-pict-online">
-        <img
-          style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            border: 0,
-            width: '7rem',
-          }}
-          src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
-          alt="Fork me on GitHub"
-        />
-      </a>
     </div>
   );
 };

@@ -12,3 +12,18 @@
   width: 32px;
   margin-right: 0.5rem;
 }
+
+.title {
+  flex: 1;
+}
+
+.coffeeImgContainer {
+  border-radius: 5px;
+  display: inline-flex;
+  margin-right: 1rem;
+  overflow: hidden;
+}
+
+.coffeeImg {
+  width: 130px;
+}
