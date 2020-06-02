@@ -5,7 +5,7 @@
   display: flex;
   font-size: 1.5rem;
   height: 48px;
-  padding: 0 1rem;
+  padding-left: 1rem;
 }
 
 .icon {
@@ -26,12 +26,4 @@
 
 .coffeeImg {
   width: 130px;
-}
-
-.githubImgContainer {
-  height: 30px;
-}
-
-.githubImg {
-  height: 100%;
 }

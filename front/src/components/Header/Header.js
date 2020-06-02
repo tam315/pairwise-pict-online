@@ -1,6 +1,5 @@
 import React from 'react';
 import icon from '../../img/icon.png';
-import githubPng from './github.png';
 import style from './Header.module.css';
 
 const Header = () => {
@@ -20,13 +19,14 @@ const Header = () => {
           src="https://cdn.buymeacoffee.com/buttons/lato-white.png"
         />
       </a>
-      <a
-        className={style.githubImgContainer}
-        href="https://github.com/junkboy0315/pairwise-pict-online"
-        target="_blank"
-      >
-        <img className={style.githubImg} src={githubPng} />
-      </a>
+      <iframe
+        src="https://ghbtns.com/github-btn.html?user=junkboy0315&repo=pairwise-pict-online&type=star&count=true&size=large"
+        frameBorder="0"
+        scrolling="0"
+        title="github star icon"
+        width="160px"
+        height="30px"
+      ></iframe>
     </div>
   );
 };
