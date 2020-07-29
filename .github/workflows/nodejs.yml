@@ -11,3 +11,30 @@ jobs:
 
       - name: test server
         run: docker-compose -f docker-compose.test.yml up --exit-code-from pict_api_test
+
+  frontend_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js v12.13.1
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.13.1'
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: web/node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ env.cache-name }}-
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: build frontend
+        run: |
+          cd front
+          yarn
+          yarn export
