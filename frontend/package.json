@@ -9,6 +9,7 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "emotion": "^10.0.27",
     "next": "9.5.0",
     "normalize.css": "^8.0.1",
     "react": "16.13.1",
