@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Button } from '../../components/Button';
+import { ModalDialog } from '../../components/ModalDialog';
 import { Textarea } from '../../components/Textarea';
 import { Header } from '../header';
 import style from './Top.module.css';
@@ -82,6 +83,7 @@ export const Top = () => {
           </div>
         </div>
       </div>
+      <ModalDialog isOpen />
     </div>
   );
 };
