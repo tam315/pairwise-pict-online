@@ -40,6 +40,7 @@ export const Top = () => {
       <div className={style.row}>
         <div className={style.factors}>
           <Textarea
+            aria-label="factors"
             value={factorText}
             onChange={setFactorText}
             style={{ flex: 1 }}
@@ -65,7 +66,7 @@ export const Top = () => {
         </Button>
 
         <div className={style.results}>
-          <Textarea value={result} style={{ flex: 1 }} />
+          <Textarea aria-label="results" value={result} style={{ flex: 1 }} />
           <div>
             <a
               download="test-results.txt"
