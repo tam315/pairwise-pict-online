@@ -4,7 +4,7 @@ version: '3.4'
 services:
   pict_api_test:
     build:
-      context: .
+      context: ./backend
       target: target_for_compilation
     environment:
       NODE_ENV: development

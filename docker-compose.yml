@@ -2,14 +2,13 @@ version: '3.4'
 services:
   pict_api:
     build:
-      context: .
+      context: ./backend
       target: target_for_development
     environment:
       NODE_ENV: development
     container_name: pict_api
     volumes:
-      - ./:/root/api/
-      - /root/api/front # to ignore front/node_modules
+      - ./backend:/root/api/
     working_dir: /root/api/
     command: fresh # run `main.go` with auto reload
     ports:
@@ -18,9 +17,9 @@ services:
     image: node:12.12.0-alpine
     container_name: pict_react
     volumes:
-      - ./front:/root/front
-      - /root/front/node_modules/
-    working_dir: /root/front
+      - ./frontend:/root/frontend
+      - /root/frontend/node_modules/
+    working_dir: /root/frontend
     ports:
       - '3000:3000'
     command: sh -c 'yarn && yarn dev'

@@ -4,7 +4,7 @@ version: '3.4'
 services:
   pict_api_prod:
     build:
-      context: .
+      context: ./backend
       target: target_for_production
     environment:
       NODE_ENV: production
@@ -21,9 +21,9 @@ services:
     environment:
       NODE_ENV: development # run frontend as dev mode to point to the local API
     volumes:
-      - ./front:/root/front
-      - /root/front/node_modules/
-    working_dir: /root/front
+      - ./frontend:/root/frontend
+      - /root/frontend/node_modules/
+    working_dir: /root/frontend
     ports:
       - '3000:3000'
     command: sh -c 'yarn && yarn start'
