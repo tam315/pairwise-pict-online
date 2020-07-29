@@ -19,6 +19,13 @@ function App({ Component, pageProps }: AppProps) {
               gtag('config', 'UA-116967778-8');`,
           }}
         ></script>
+        {/* adsens */}
+        <script
+          data-ad-client="ca-pub-7134126650568891"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
+        {/* adsense end */}
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Generate pairwise testcases online" />
