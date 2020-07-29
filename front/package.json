@@ -1,31 +1,22 @@
 {
-  "name": "pairwise-pict-online-front",
+  "name": "pairsise-pict-online-front",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "next": "9.5.0",
+    "normalize.css": "^8.0.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.43",
+    "typescript": "^3.9.7"
   }
 }

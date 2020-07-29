@@ -1,12 +1,11 @@
 import React from 'react';
-import icon from '../../img/icon.png';
 import style from './Header.module.css';
 
-const Header = () => {
+export const Header = () => {
   return (
     <div className={style.rootContainer}>
-      <img src={icon} className={style.icon} alt="document" />
-      <span className={style.title}>Pairwise Pict Online</span>
+      <img src="/icon.png" className={style.icon} alt="document" />
+      <h1 className={style.title}>Pairwise Pict Online</h1>
       <a
         className={style.coffeeImgContainer}
         href="https://www.buymeacoffee.com/FVSUK5u"
@@ -30,5 +29,3 @@ const Header = () => {
     </div>
   );
 };
-
-export default Header;

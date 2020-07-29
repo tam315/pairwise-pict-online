@@ -17,13 +17,10 @@ services:
   pict_react:
     image: node:12.12.0-alpine
     container_name: pict_react
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-      - CHOKIDAR_INTERVAL=1000
     volumes:
       - ./front:/root/front
       - /root/front/node_modules/
     working_dir: /root/front
     ports:
       - '3000:3000'
-    command: sh -c 'yarn && yarn start'
+    command: sh -c 'yarn && yarn dev'
