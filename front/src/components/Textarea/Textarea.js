@@ -9,8 +9,6 @@ export const Textarea = (props) => {
       onChange={(e) => onChange(e.target.value)}
       value={value}
       {...rest}
-    >
-      enter test spec here
-    </textarea>
+    />
   );
 };
