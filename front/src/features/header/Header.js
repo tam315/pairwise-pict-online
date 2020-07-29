@@ -1,11 +1,10 @@
 import React from 'react';
-import icon from '../../img/icon.png';
 import style from './Header.module.css';
 
-const Header = () => {
+export const Header = () => {
   return (
     <div className={style.rootContainer}>
-      <img src={icon} className={style.icon} alt="document" />
+      <img src="/icon.png" className={style.icon} alt="document" />
       <span className={style.title}>Pairwise Pict Online</span>
       <a
         className={style.coffeeImgContainer}
@@ -30,5 +29,3 @@ const Header = () => {
     </div>
   );
 };
-
-export default Header;
