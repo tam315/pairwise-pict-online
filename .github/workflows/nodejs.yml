@@ -35,6 +35,6 @@ jobs:
 
       - name: build frontend
         run: |
-          cd front
+          cd frontend
           yarn
           yarn export
