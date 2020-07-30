@@ -4,10 +4,11 @@ import { Portal } from '../Portal/Portal';
 
 interface IProps {
   isOpen: boolean;
+  children: React.ReactElement;
 }
 
 export const ModalDialog: React.FC<IProps> = (props) => {
-  const { isOpen, ...rest } = props;
+  const { children, isOpen } = props;
 
   // オープン状態になるたびに新しくPortalを生成することで、
   // 時間的に後に開いたモーダルを<body>直下レベルの「より後方」に描写させる。
@@ -42,13 +43,11 @@ export const ModalDialog: React.FC<IProps> = (props) => {
     `,
   };
 
-  console.log(styles);
-
   return (
     <Portal>
       <div className={styles.container}>
         <div className={styles.backdrop} />
-        <div className={styles.modalContent}>asdf</div>
+        <div className={styles.modalContent}>{children}</div>
       </div>
     </Portal>
   );
