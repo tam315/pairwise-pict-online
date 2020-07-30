@@ -4,6 +4,12 @@ import React from 'react';
 import { AdBlockGuard } from '../features/ads/AdBlockGuard';
 import './global.css';
 
+declare global {
+  interface Window {
+    adsbygoogle: any;
+  }
+}
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <>

@@ -1,8 +1,9 @@
+import { css } from 'emotion';
 import React, { useCallback, useState } from 'react';
 import { Button } from '../../components/Button';
 import { Textarea } from '../../components/Textarea';
+import { AdCard } from '../ads/AdCard';
 import { Header } from '../header';
-import style from './Top.module.css';
 
 export const Top = () => {
   const [isFetching, setIsFetching] = useState(false);
@@ -25,9 +26,56 @@ export const Top = () => {
       .finally(() => setIsFetching(false));
   }, [factorText]);
 
+  const style = {
+    rootContainer: css`
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+    `,
+    description: css`
+      padding: 0 1rem;
+      margin-top: 1rem;
+      line-height: 1.8;
+    `,
+    converterRow: css`
+      align-items: stretch;
+      display: flex;
+      flex: 1 0; /* expand */
+      justify-content: space-between;
+      padding: 1rem;
+    `,
+    adsRow: css`
+      flex: 0 0 90px;
+      margin-top: 1rem;
+      overflow: hidden;
+      text-align: center;
+    `,
+    factors: css`
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    `,
+    results: css`
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    `,
+    download: css`
+      display: block;
+      margin: 0.5rem 0 1rem;
+      text-align: center;
+    `,
+  };
+
   return (
     <div className={style.rootContainer}>
       <Header />
+
+      <div className={style.adsRow}>
+        <AdCard />
+      </div>
 
       <div className={style.description}>
         An online service that easily generates pair-wise test cases.
@@ -37,7 +85,7 @@ export const Top = () => {
         hood.
       </div>
 
-      <div className={style.row}>
+      <div className={style.converterRow}>
         <div className={style.factors}>
           <Textarea
             aria-label="factors"
