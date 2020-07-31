@@ -45,6 +45,9 @@ export const Top = () => {
       flex: 1 0; /* expand */
       justify-content: space-between;
       padding: 1rem;
+      @media (max-width: 700px) {
+        flex-direction: column;
+      }
     `,
     adsRow: css`
       flex: 0 0 90px;
@@ -62,10 +65,26 @@ export const Top = () => {
       flex-direction: column;
       flex: 1;
     `,
+    generateButton: css`
+      align-self: center;
+      width: 8rem;
+      margin: 1rem;
+      ::after {
+        content: ' =>';
+      }
+      @media (max-width: 700px) {
+        ::after {
+          content: none;
+        }
+      }
+    `,
     download: css`
       display: block;
       margin: 0.5rem 0 1rem;
       text-align: center;
+      @media (max-width: 700px) {
+        display: none;
+      }
     `,
   };
 
@@ -102,15 +121,12 @@ export const Top = () => {
             className={style.download}
             tabIndex={-1}
           >
-            Download
+            Download Test Factors as .txt
           </a>
         </div>
 
-        <Button
-          onClick={onGenerate}
-          style={{ alignSelf: 'center', width: '8rem', margin: '0 1rem' }}
-        >
-          {isFetching ? 'loading...' : 'Generate=>'}
+        <Button onClick={onGenerate} className={style.generateButton}>
+          {isFetching ? 'loading...' : 'Generate'}
         </Button>
 
         <div className={style.results}>
@@ -125,7 +141,7 @@ export const Top = () => {
               className={style.download}
               tabIndex={-1}
             >
-              Download
+              Download Results as .txt
             </a>
           </div>
         </div>

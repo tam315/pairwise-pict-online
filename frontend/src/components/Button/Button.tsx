@@ -1,10 +1,11 @@
+import { cx } from 'emotion';
 import React from 'react';
 import style from './Button.module.css';
 
 export const Button = (props) => {
-  const { children, ...rest } = props;
+  const { children, className, ...rest } = props;
   return (
-    <button className={style.button} {...rest}>
+    <button className={cx(style.button, className)} {...rest}>
       {children}
     </button>
   );
