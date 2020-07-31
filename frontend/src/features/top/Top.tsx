@@ -121,7 +121,7 @@ export const Top = () => {
             className={style.download}
             tabIndex={-1}
           >
-            Download Test Factors as .txt
+            Download test factors as .txt
           </a>
         </div>
 
@@ -141,7 +141,7 @@ export const Top = () => {
               className={style.download}
               tabIndex={-1}
             >
-              Download Results as .txt
+              Download results as .txt
             </a>
           </div>
         </div>
