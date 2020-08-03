@@ -41,7 +41,7 @@ export const AdBlockGuard: React.FC<IProps> = (props) => {
           <div>
             <p>We&apos;ve noticed that you are using an ad blocker.</p>
             <p>
-              Please <b>disable your ad blocker</b> for this site and help us to
+              Please <b>disable your ad blocker for this site</b> and help us to
               provide free services.
             </p>
           </div>
