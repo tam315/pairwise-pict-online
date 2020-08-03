@@ -1,5 +1,5 @@
-import { css } from 'emotion';
-import React, { useCallback, useState } from 'react';
+import { css } from '@emotion/core';
+import { useCallback, useState } from 'react';
 import { Button } from '../../components/Button';
 import { Textarea } from '../../components/Textarea';
 import { AdCard } from '../ads/AdCard';
@@ -65,18 +65,10 @@ export const Top = () => {
       flex-direction: column;
       flex: 1;
     `,
-    generateButton: css`
+    buttonContainer: css`
       align-self: center;
       width: 8rem;
       margin: 1rem;
-      ::after {
-        content: ' =>';
-      }
-      @media (max-width: 700px) {
-        ::after {
-          content: none;
-        }
-      }
     `,
     download: css`
       display: block;
@@ -89,14 +81,14 @@ export const Top = () => {
   };
 
   return (
-    <div className={style.rootContainer}>
+    <div css={style.rootContainer}>
       <Header />
 
-      <div className={style.adsRow}>
+      <div css={style.adsRow}>
         <AdCard />
       </div>
 
-      <div className={style.description}>
+      <div css={style.description}>
         An online service that easily generates pair-wise test cases.
         <br />
         It's powered by
@@ -104,8 +96,8 @@ export const Top = () => {
         hood.
       </div>
 
-      <div className={style.converterRow}>
-        <div className={style.factors}>
+      <div css={style.converterRow}>
+        <div css={style.factors}>
           <Textarea
             aria-label="factors"
             value={factorText}
@@ -118,18 +110,20 @@ export const Top = () => {
               'data:application/csv;charset=utf-8,' +
               encodeURIComponent(factorText)
             }
-            className={style.download}
+            css={style.download}
             tabIndex={-1}
           >
             Download test factors as .txt
           </a>
         </div>
 
-        <Button onClick={onGenerate} className={style.generateButton}>
-          {isFetching ? 'loading...' : 'Generate'}
-        </Button>
+        <div css={style.buttonContainer}>
+          <Button onClick={onGenerate}>
+            {isFetching ? 'loading...' : 'Generate'}
+          </Button>
+        </div>
 
-        <div className={style.results}>
+        <div css={style.results}>
           <Textarea aria-label="results" value={result} style={{ flex: 1 }} />
           <div>
             <a
@@ -138,7 +132,7 @@ export const Top = () => {
                 'data:application/csv;charset=utf-8,' +
                 encodeURIComponent(result)
               }
-              className={style.download}
+              css={style.download}
               tabIndex={-1}
             >
               Download results as .txt

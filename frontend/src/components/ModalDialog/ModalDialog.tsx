@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import React from 'react';
 import { Portal } from '../Portal/Portal';
 
@@ -45,9 +45,9 @@ export const ModalDialog: React.FC<IProps> = (props) => {
 
   return (
     <Portal>
-      <div className={styles.container}>
-        <div className={styles.backdrop} />
-        <div className={styles.modalContent}>{children}</div>
+      <div css={styles.container}>
+        <div css={styles.backdrop} />
+        <div css={styles.modalContent}>{children}</div>
       </div>
     </Portal>
   );

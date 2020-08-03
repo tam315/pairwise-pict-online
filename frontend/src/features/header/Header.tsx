@@ -1,5 +1,4 @@
-import { css } from 'emotion';
-import React from 'react';
+import { css } from '@emotion/core';
 
 export const Header = () => {
   const styles = {
@@ -40,22 +39,22 @@ export const Header = () => {
   };
 
   return (
-    <div className={styles.rootContainer}>
-      <img src="/icon.png" className={styles.icon} alt="document" />
-      <h1 className={styles.title}>Pairwise Pict Online</h1>
+    <div css={styles.rootContainer}>
+      <img src="/icon.png" css={styles.icon} alt="document" />
+      <h1 css={styles.title}>Pairwise Pict Online</h1>
       <a
-        className={styles.coffeeImgContainer}
+        css={styles.coffeeImgContainer}
         href="https://www.buymeacoffee.com/FVSUK5u"
         rel="noopener noreferrer"
         target="_blank"
       >
         <img
           alt="Buy Me A Coffee"
-          className={styles.coffeeImg}
+          css={styles.coffeeImg}
           src="https://cdn.buymeacoffee.com/buttons/lato-white.png"
         />
       </a>
-      <div className={styles.githubContainer}>
+      <div css={styles.githubContainer}>
         <iframe
           src="https://ghbtns.com/github-btn.html?user=junkboy0315&repo=pairwise-pict-online&type=star&count=true&size=large"
           frameBorder="0"

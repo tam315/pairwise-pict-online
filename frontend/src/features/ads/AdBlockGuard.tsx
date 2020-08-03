@@ -1,5 +1,5 @@
+import { css } from '@emotion/core';
 import { useAdBlockDetector } from 'adblock-detector-hook';
-import { css } from 'emotion';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ModalDialog } from '../../components/ModalDialog';
 
@@ -45,8 +45,8 @@ export const AdBlockGuard: React.FC<IProps> = (props) => {
               provide free services.
             </p>
           </div>
-          <div className={styles.buttonRow}>
-            <button className={styles.button} onClick={onCloseButtonClicked}>
+          <div css={styles.buttonRow}>
+            <button css={styles.button} onClick={onCloseButtonClicked}>
               Close
             </button>
           </div>
