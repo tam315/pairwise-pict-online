@@ -1,7 +1,6 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-import { AdBlockGuard } from '../features/ads/AdBlockGuard';
 import './global.css';
 
 declare global {
@@ -44,9 +43,7 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="Generate pairwise testcases online" />
         <title>Pairwise Pict Online</title>
       </Head>
-      <AdBlockGuard>
-        <Component {...pageProps} />
-      </AdBlockGuard>
+      <Component {...pageProps} />
     </>
   );
 }

@@ -2,7 +2,6 @@ import { css } from '@emotion/core';
 import { useCallback, useState } from 'react';
 import { Button } from '../../components/Button';
 import { Textarea } from '../../components/Textarea';
-import { AdCard } from '../ads/AdCard';
 import { Header } from '../header';
 
 export const Top = () => {
@@ -83,10 +82,6 @@ export const Top = () => {
   return (
     <div css={style.rootContainer}>
       <Header />
-
-      <div css={style.adsRow}>
-        <AdCard />
-      </div>
 
       <div css={style.description}>
         An online service that easily generates pair-wise test cases.
