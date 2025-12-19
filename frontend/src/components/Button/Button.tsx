@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 export const Button = (props) => {
   const { children, className, ...rest } = props;
