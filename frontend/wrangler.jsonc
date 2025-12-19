@@ -2,7 +2,7 @@
   "name": "pairwise-pict-online",
   "compatibility_date": "2025-12-16",
   "assets": {
-    "directory": "./frontend/out"
+    "directory": "./out"
   },
   "workers_dev": true,
   "preview_urls": true,
