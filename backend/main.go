@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -48,7 +47,11 @@ func SetupRouter() *gin.Engine {
 	router.POST("/generate_cases", func(c *gin.Context) {
 		// extract request body
 		var generateCasesRequestBody GenerateCasesRequestBody
-		c.BindJSON(&generateCasesRequestBody)
+		if err := c.BindJSON(&generateCasesRequestBody); err != nil {
+			log.Printf("Failed to bind JSON: %v", err)
+			c.JSON(400, "Invalid JSON format")
+			return
+		}
 
 		// log body
 		bodyBytes, err := json.Marshal(generateCasesRequestBody)
@@ -60,12 +63,14 @@ func SetupRouter() *gin.Engine {
 
 		// limit multi-byte chars
 		if len(bodyBytes) != utf8.RuneCount(bodyBytes) {
+			log.Printf("Multi-byte characters detected in request: %s", bodyBytes)
 			c.JSON(400, "Multi-byte characters cannot be used for now.")
 			return
 		}
 
 		// limit size of factors
 		if len(bodyBytes) > 5000 {
+			log.Printf("Request body too large: %d bytes", len(bodyBytes))
 			c.JSON(400, "Test factors are too large. Maximum size is limited to 5KB.")
 			return
 		}
@@ -76,7 +81,7 @@ func SetupRouter() *gin.Engine {
 
 		// create temporary test-factors file
 		factors := []byte(generateCasesRequestBody.Factors)
-		tmpfile, err := ioutil.TempFile("", "temp-test-factors-")
+		tmpfile, err := os.CreateTemp("", "temp-test-factors-")
 		if err != nil {
 			log.Print(err)
 			c.Status(500)
@@ -98,6 +103,7 @@ func SetupRouter() *gin.Engine {
 		pictCmd := exec.Command("pict", tmpfile.Name())
 		pictOut, err := pictCmd.CombinedOutput() // get both stdin & stdout
 		if err != nil {
+			log.Printf("PICT command failed: %v, output: %s", err, string(pictOut))
 			c.JSON(400, string(pictOut))
 			return
 		}
@@ -110,5 +116,12 @@ func SetupRouter() *gin.Engine {
 
 func main() {
 	router := SetupRouter()
-	router.Run()
+
+	// Cloud Run provides the PORT environment variable
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	router.Run(":" + port)
 }
