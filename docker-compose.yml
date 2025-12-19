@@ -10,11 +10,11 @@ services:
     volumes:
       - ./backend:/root/api/
     working_dir: /root/api/
-    command: fresh # run `main.go` with auto reload
+    command: air # run `main.go` with auto reload
     ports:
       - '8080:8080'
   pict_react:
-    image: node:12.12.0-alpine
+    image: node:24-alpine
     container_name: pict_react
     volumes:
       - ./frontend:/root/frontend
@@ -22,4 +22,4 @@ services:
     working_dir: /root/frontend
     ports:
       - '3000:3000'
-    command: sh -c 'yarn && yarn dev'
+    command: sh -c 'npm i && npm run dev'
