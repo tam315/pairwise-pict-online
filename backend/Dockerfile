@@ -3,7 +3,7 @@
 ###############################
 
 ### pict ###
-FROM golang:1.25-bookworm AS target_for_development
+FROM golang:1.25-trixie AS target_for_development
 
 RUN apt update
 RUN apt -y install clang
@@ -38,7 +38,7 @@ RUN go build -v -o server
 
 # Use clean image for a lean production container.
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
-FROM debian:bookworm-slim AS target_for_production
+FROM debian:trixie-slim AS target_for_production
 COPY --from=target_for_compilation /root/pict/pict /usr/bin/
 RUN which pict
 COPY --from=target_for_compilation /root/api/server /server
