@@ -33,6 +33,7 @@ func SetupRouter() *gin.Engine {
 	if os.Getenv("NODE_ENV") != "development" {
 		config.AllowOrigins = []string{
 			"https://pairwise.yuuniworks.com",
+// 			"http://localhost:3000",
 		}
 	}
 	router.Use(cors.New(config))
