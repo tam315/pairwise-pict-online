@@ -1,0 +1,30 @@
+version: '3'
+
+tasks:
+  default:
+    desc: Start dev environment (backend + frontend)
+    deps:
+      - dev:backend
+      - dev:frontend
+
+  dev:backend:
+    cmd: docker compose up --build
+
+  dev:frontend:
+    dir: frontend
+    cmd: npm run dev
+
+  test:
+    desc: Run all tests
+    deps:
+      - test:backend
+      - test:frontend
+
+  test:backend:
+    cmd: docker compose run --build --rm pict_api go test ./...
+
+  test:frontend:
+    dir: frontend
+    cmds:
+      - npm ci
+      - npm run build
