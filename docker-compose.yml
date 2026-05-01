@@ -10,16 +10,6 @@ services:
     volumes:
       - ./backend:/root/api/
     working_dir: /root/api/
-    command: air # run `main.go` with auto reload
+    command: air
     ports:
       - '8080:8080'
-  pict_react:
-    image: node:24-alpine
-    container_name: pict_react
-    volumes:
-      - ./frontend:/root/frontend
-      - /root/frontend/node_modules/
-    working_dir: /root/frontend
-    ports:
-      - '3000:3000'
-    command: sh -c 'npm i && npm run dev'

@@ -14,8 +14,7 @@ export const Top = () => {
   const onGenerate = useCallback(() => {
     setIsFetching(true);
     setResult('');
-    console.log(process.env);
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/generate_cases`, {
+    fetch(`${import.meta.env.VITE_API_URL}/generate_cases`, {
       method: 'POST',
       body: JSON.stringify({ factors: factorText }),
     })

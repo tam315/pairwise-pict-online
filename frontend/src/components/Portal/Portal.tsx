@@ -9,11 +9,6 @@ export const Portal: React.FC<IProps> = (props) => {
   const { children } = props;
   let targetNode;
 
-  // SSR
-  if (typeof document === 'undefined') {
-    return null;
-  }
-
   useEffect(() => {
     return () => {
       document.body.removeChild(targetNode);
