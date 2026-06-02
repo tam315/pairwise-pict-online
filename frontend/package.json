@@ -10,16 +10,16 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "normalize.css": "^8.0.1",
-    "react": "19.2.5",
-    "react-dom": "19.2.5"
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
   },
   "devDependencies": {
-    "@types/node": "^25.0.3",
-    "@types/react": "^19.2.14",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
+    "@vitejs/plugin-react": "^6.0.2",
     "typescript": "6.0.3",
-    "vite": "^8.0.10"
+    "vite": "^8.0.14"
   },
   "engines": {
     "node": "22.16.0"

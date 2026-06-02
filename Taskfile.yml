@@ -28,3 +28,19 @@ tasks:
     cmds:
       - npm ci
       - npm run build
+
+  upgrade:frontend:
+    desc: 依存関係のアップグレード(frontend)
+    dir: frontend
+    cmd: npx npm-check-updates --interactive
+
+  upgrade:backend:
+    desc: 依存関係のアップグレード(backend)
+    dir: backend
+    cmd: go get -u ./...
+
+  deploy:
+    desc: Deploy to production
+    cmds:
+      - echo "Deploying to production..."
+      - ./scripts/deploy.sh
