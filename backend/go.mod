@@ -1,6 +1,6 @@
 module example.com/m/v2
 
-go 1.26.4
+go 1.26.5
 
 require (
 	github.com/gin-contrib/cors v1.7.7
