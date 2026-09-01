@@ -3,7 +3,7 @@
 ###############################
 
 ### pict ###
-FROM golang:1.26.5-trixie AS target_for_development
+FROM golang:1.27.0-trixie AS target_for_development
 
 RUN apt update
 RUN apt -y install clang

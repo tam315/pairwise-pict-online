@@ -8,6 +8,7 @@ REGISTRY_HOST="asia-northeast1-docker.pkg.dev"
 IMAGE="${REGISTRY_HOST}/pairwise-pict-online/my-repo/pict_api"
 
 # プロジェクトをセット
+gcloud auth login
 gcloud config set project ${PROJECT_ID}
 gcloud auth configure-docker ${REGISTRY_HOST} --quiet
 
@@ -21,4 +22,4 @@ docker push ${IMAGE}
 gcloud run deploy pict-api \
   --platform=managed \
   --image=${IMAGE} \
-  --region=asia-northeast1 
+  --region=asia-northeast1
